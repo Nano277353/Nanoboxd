@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Nanoboxd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24ef09767af8f76f46aec1ec618cf4736b8245fd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a27fa22f201549ae4adb5144d84760ec7b4277c")]
 [assembly: System.Reflection.AssemblyProductAttribute("Nanoboxd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Nanoboxd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
