@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/nano/workspace/C#/Nanoboxd/Nanoboxd.csproj": {}
+    "/home/nano/workspace/Nanoboxd/Nanoboxd/Nanoboxd.csproj": {}
   },
   "projects": {
-    "/home/nano/workspace/C#/Nanoboxd/Nanoboxd.csproj": {
+    "/home/nano/workspace/Nanoboxd/Nanoboxd/Nanoboxd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/nano/workspace/C#/Nanoboxd/Nanoboxd.csproj",
+        "projectUniqueName": "/home/nano/workspace/Nanoboxd/Nanoboxd/Nanoboxd.csproj",
         "projectName": "Nanoboxd",
-        "projectPath": "/home/nano/workspace/C#/Nanoboxd/Nanoboxd.csproj",
+        "projectPath": "/home/nano/workspace/Nanoboxd/Nanoboxd/Nanoboxd.csproj",
         "packagesPath": "/home/nano/.nuget/packages/",
-        "outputPath": "/home/nano/workspace/C#/Nanoboxd/obj/",
+        "outputPath": "/home/nano/workspace/Nanoboxd/Nanoboxd/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/nano/.nuget/NuGet/NuGet.Config"
