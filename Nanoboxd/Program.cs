@@ -18,7 +18,7 @@ TMDbServiceAPI tmdb = new TMDbServiceAPI();
 
 while (true)
 {
-    Console.Write("\nSearch for a movie (type 'exit' to quit): ");
+    Console.Write("\nSearch for a movie (or type 'exit' to quit): ");
     string input = Console.ReadLine() ?? string.Empty;
 
     if (input.ToLower() == "exit") break;
