@@ -6,7 +6,7 @@ public class Movie
 {
     [JsonPropertyName("id")]
     public int Id { get; set; }
-    
+
     [JsonPropertyName("title")]
     public string Title { get; set; } = string.Empty;
 
@@ -15,6 +15,4 @@ public class Movie
 
     [JsonPropertyName("vote_average")]
     public double Rating { get; set; }
-
-    public string Director { get; set; } = string.Empty;
 }
