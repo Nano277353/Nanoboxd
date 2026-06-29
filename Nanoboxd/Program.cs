@@ -9,11 +9,23 @@ Console.WriteLine("Please create a  username and password");
 
 User user = new User();
 
+user.EnterCredentials();
+
 Console.WriteLine("Thank you for creating an account! Please enter your credentials to log in.");
 
 Console.WriteLine("Enter your username and password:");
 
-user.EnterCredentials();
+Console.WriteLine("Username:");
+string enteredUsername = Console.ReadLine() ?? string.Empty;
+
+Console.WriteLine("Password:");
+string enteredPassword = Console.ReadLine() ?? string.Empty;
+
+if (user.Username != enteredUsername || user.Password != enteredPassword || string.IsNullOrWhiteSpace(enteredUsername) || string.IsNullOrWhiteSpace(enteredPassword))
+{
+    Console.WriteLine("Invalid credentials. Exiting.");
+    return;
+}
 
 Console.WriteLine($"Welcome, {user.Username}!");
 
