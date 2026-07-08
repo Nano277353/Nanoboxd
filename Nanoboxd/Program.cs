@@ -13,12 +13,12 @@ user.EnterCredentials();
 
 Console.WriteLine("Thank you for creating an account! Please enter your credentials to log in.");
 
-Console.WriteLine("Enter your username and password:");
+Console.WriteLine("\nEnter your username and password:");
 
-Console.WriteLine("Username:");
+Console.Write("Username:");
 string enteredUsername = Console.ReadLine() ?? string.Empty;
 
-Console.WriteLine("Password:");
+Console.Write("Password:");
 string enteredPassword = Console.ReadLine() ?? string.Empty;
 
 if (user.Username != enteredUsername || user.Password != enteredPassword || string.IsNullOrWhiteSpace(enteredUsername) || string.IsNullOrWhiteSpace(enteredPassword))
@@ -52,7 +52,7 @@ while (true)
     for (int i = 0; i < topResults.Count; i++)
     {
         Movie movie = topResults[i];
-        Console.WriteLine($"  {i + 1}. {movie.Title} ({movie.ReleaseDate}) — TMDb: {movie.Rating:F1}/10");
+        Console.WriteLine($"  {i + 1}. {movie.Title} ({movie.ReleaseDate}) — TMDB Rating: {movie.Rating:F1}/10");
     }
 
     Console.Write("\nEnter a number to rate a movie, or press Enter to keep searching: ");
@@ -88,7 +88,7 @@ while (true)
         Console.WriteLine($"\nYour collection ({user.Collection.Count} movie(s)):\n");
         foreach (RatedMovie rated in user.Collection)
         {
-            Console.WriteLine($"  {rated.Movie.Title} ({rated.Movie.ReleaseDate}) — Your Rating: {rated.UserRating:F1}/10 | TMDb: {rated.Movie.Rating:F1}/10");
+            Console.WriteLine($"  {rated.Movie.Title} ({rated.Movie.ReleaseDate}) — Your Rating: {rated.UserRating:F1}/10 | TMDB Rating: {rated.Movie.Rating:F1}/10");
         }
     }
 }
