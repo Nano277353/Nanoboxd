@@ -76,7 +76,7 @@ Nanoboxd/
    dotnet run
    ```
 
-## 🎮 Usage
+## Usage
 
 1. Create a username and password, then log in
 2. Type a movie title to search TMDb
