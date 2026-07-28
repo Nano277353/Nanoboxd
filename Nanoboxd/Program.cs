@@ -1,33 +1,78 @@
-﻿﻿using Classes;
+﻿using Classes;
 using Services;
 
 string banner = File.ReadAllText("Header.txt");
 
 Console.WriteLine(banner);
 
-Console.WriteLine("Please create a  username and password");
+List<User> users = UserStore.LoadUsers();
 
-User user = new User();
+User? currentUser = null;
 
-user.EnterCredentials();
-
-Console.WriteLine("Thank you for creating an account! Please enter your credentials to log in.");
-
-Console.WriteLine("\nEnter your username and password:");
-
-Console.Write("Username:");
-string enteredUsername = Console.ReadLine() ?? string.Empty;
-
-Console.Write("Password:");
-string enteredPassword = Console.ReadLine() ?? string.Empty;
-
-if (user.Username != enteredUsername || user.Password != enteredPassword || string.IsNullOrWhiteSpace(enteredUsername) || string.IsNullOrWhiteSpace(enteredPassword))
+while (currentUser == null)
 {
-    Console.WriteLine("Invalid credentials. Exiting.");
-    return;
-}
+    Console.Write("\n(L)ogin or (R)egister? ");
+    string choice = (Console.ReadLine() ?? string.Empty).Trim().ToLower();
 
-Console.WriteLine($"Welcome, {user.Username}!");
+    if (choice == "r")
+    {
+        Console.Write("Choose a username: ");
+        string username = (Console.ReadLine() ?? string.Empty).Trim();
+
+        if (string.IsNullOrWhiteSpace(username))
+        {
+            Console.WriteLine("Username cannot be empty.");
+            continue;
+        }
+
+        if (users.Any(u => u.Username.Equals(username, StringComparison.OrdinalIgnoreCase)))
+        {
+            Console.WriteLine("That username is already taken.");
+            continue;
+        }
+
+        Console.Write("Choose a password: ");
+        string password = Console.ReadLine() ?? string.Empty;
+
+        if (string.IsNullOrWhiteSpace(password))
+        {
+            Console.WriteLine("Password cannot be empty.");
+            continue;
+        }
+
+        User newUser = new User { Username = username };
+        newUser.SetPassword(password);
+
+        users.Add(newUser);
+        UserStore.SaveUsers(users);
+
+        Console.WriteLine($"Account created! Welcome, {newUser.Username}!");
+        currentUser = newUser;
+    }
+    else if (choice == "l")
+    {
+        Console.Write("Username: ");
+        string username = (Console.ReadLine() ?? string.Empty).Trim();
+
+        Console.Write("Password: ");
+        string password = Console.ReadLine() ?? string.Empty;
+
+        User? match = users.FirstOrDefault(u => u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
+
+        if (match == null || !match.VerifyPassword(password))
+        {
+            Console.WriteLine("Invalid credentials.");
+            continue;
+        }
+
+        Console.WriteLine($"Welcome back, {match.Username}!");
+        currentUser = match;
+    }
+    else
+    {
+        Console.WriteLine("Please enter 'L' or 'R'.");
+    }
+}
 
 TMDbServiceAPI tmdb = new TMDbServiceAPI();
 
@@ -77,7 +122,8 @@ while (true)
         continue;
     }
 
-    user.Collection.Add(new RatedMovie(selected, userRating));
+    currentUser.Collection.Add(new RatedMovie(selected, userRating));
+    UserStore.SaveUsers(users);
     Console.WriteLine($"Added \"{selected.Title}\" with your rating of {userRating:F1}/10 to your collection.");
 
     Console.Write("\nKeep searching (s) or view your collection (c)? ");
@@ -85,8 +131,8 @@ while (true)
 
     if (next == "c")
     {
-        Console.WriteLine($"\nYour collection ({user.Collection.Count} movie(s)):\n");
-        foreach (RatedMovie rated in user.Collection)
+        Console.WriteLine($"\nYour collection ({currentUser.Collection.Count} movie(s)):\n");
+        foreach (RatedMovie rated in currentUser.Collection)
         {
             Console.WriteLine($"  {rated.Movie.Title} ({rated.Movie.ReleaseDate}) — Your Rating: {rated.UserRating:F1}/10 | TMDB Rating: {rated.Movie.Rating:F1}/10");
         }
