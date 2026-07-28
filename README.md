@@ -98,10 +98,11 @@ Added "Interstellar" with your rating of 9.0/10 to your collection.
 
 ## Roadmap
 
-- [ ] Persist user accounts and collections between sessions (via `UserStore`)
-- [ ] Password hashing instead of plain-text credentials
+- [✓] Persist user accounts and collections between sessions (via `UserStore`)
+- [✓] Password hashing instead of plain-text credentials
 - [ ] Edit and delete ratings
 - [ ] More search results with pagination
+- [ ] Actual front end interface
 
 ## Acknowledgments
 
